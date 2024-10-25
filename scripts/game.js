@@ -1,8 +1,9 @@
-var words =['Apple', 'Baby', 'Cartoon', 'Donkey', 'Edge', 'Football',
-    'Goalkeeper', 'Happy', 'Ignite', 'Jar', 'Kingdom', 'Lamp', 'Map', 'Net',
-    'Ox', 'Parking', 'Quest', 'Ramp', 'Station', 'Target', 'User',
-    'Virtual', 'Windows', 'Xray', 'Youtube', 'Zodiac' 
- ];
+var words = [
+    'APPLE', 'BABY', 'CARTOON', 'DONKEY', 'EDGE', 'FOOTBALL',
+    'GOALKEEPER', 'HAPPY', 'IGNITE', 'JAR', 'KINGDOM', 'LAMP',
+    'MAP', 'NET', 'OX', 'PARKING', 'QUEST', 'RAMP', 'STATION',
+    'TARGET', 'USER', 'VIRTUAL', 'WINDOWS', 'XRAY', 'YOUTUBE', 'ZODIAC'
+];
 
 function generateRandNum(){
     var min = 0;
@@ -41,4 +42,22 @@ console.log(arrayDashes);
 
 answerSection.textContent = arrayDashes.join('');
 
-//var key = document.querySelectorAll('.letter');
+var key = document.querySelectorAll('.letter');
+
+key.forEach((pressedKey) => {
+    pressedKey.addEventListener('click', (event) =>{
+        console.log(`${event.target.textContent} clicked!`);
+        var pressedLetter = event.target.textContent;
+        letterChecker(pressedLetter);
+    })
+});
+
+function letterChecker (letterClicked){
+    for(var x = 0; x < randomWord.length; x++)
+        {
+            if(letterClicked == randomWord[x]){
+                arrayDashes[x] = letterClicked;
+                answerSection.textContent = arrayDashes.join('');
+            }
+        }
+};
