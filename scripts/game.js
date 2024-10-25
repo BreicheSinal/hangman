@@ -25,7 +25,7 @@ console.log(length);
 
 function addDashes(randNum)
 {
-    var dashes = ' '; 
+    var dashes = []; 
     for (var x = 0; x < randomWord.length; x++)
     {           
         console.log('im here');
