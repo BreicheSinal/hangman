@@ -22,3 +22,16 @@ var answerSection = document.getElementById('answer-section');
 
 var length = randomWord.length;
 console.log(length);
+
+function addDashes(randNum)
+{
+    var dashes = ' '; 
+    for (var x = 0; x < randomWord.length; x++)
+    {           
+        console.log('im here');
+        dashes += "_ ";
+    }
+    return dashes;
+};
+
+answerSection.textContent = addDashes(length);
