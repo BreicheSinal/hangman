@@ -29,9 +29,16 @@ function addDashes(randNum)
     for (var x = 0; x < randomWord.length; x++)
     {           
         console.log('im here');
-        dashes += "_ ";
+        dashes.push('_ ');
     }
+
     return dashes;
 };
 
-answerSection.textContent = addDashes(length);
+var arrayDashes = addDashes(length);
+
+console.log(arrayDashes);
+
+answerSection.textContent = arrayDashes.join('');
+
+//var key = document.querySelectorAll('.letter');
