@@ -7,7 +7,7 @@ var words = [
 
 function generateRandNum(){
     var min = 0;
-    var max = words.length;
+    var max = words.length - 1;
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
@@ -52,12 +52,41 @@ key.forEach((pressedKey) => {
     })
 });
 
+var counter = 0;
+var keyCounter =0;
+
 function letterChecker (letterClicked){
-    for(var x = 0; x < randomWord.length; x++)
-        {
-            if(letterClicked == randomWord[x]){
-                arrayDashes[x] = letterClicked;
-                answerSection.textContent = arrayDashes.join('');
-            }
+    for(var x = 0; x < randomWord.length; x++){
+        if(letterClicked == randomWord[x]){
+            arrayDashes[x] = letterClicked;
+            answerSection.textContent = arrayDashes.join('');
+            counter++;
         }
+    }
+
+        if((randomWord.indexOf(letterClicked)) == -1)
+        {
+            console.log('IM HERE!');
+            keyCounter++;
+            addBodyPart();
+        }
+
+
+        /*console.log(arrayDashes.join(''));*/
+        console.log(keyCounter);
+
+        if (arrayDashes.join('').toString() == randomWord)
+        {
+            answerSection.textContent = 'YOU WIN!';
+            setTimeout(() =>{
+                location.reload();
+            }, 1000);
+        }
+        else if(arrayDashes.join('').toString() != randomWord && keyCounter >= 6){
+            answerSection.textContent = 'GAME OVER!';
+            setTimeout(() =>{
+                location.reload();
+            }, 1000);
+        }; 
+    
 };
