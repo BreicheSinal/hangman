@@ -13,7 +13,7 @@ function generateRandNum(){
 
 var randNum = generateRandNum();
 
-console.log(randNum);
+//console.log(randNum);
 
 var randomWord = words[randNum];
 
@@ -22,7 +22,7 @@ console.log(randomWord);
 var answerSection = document.getElementById('answer-section');
 
 var length = randomWord.length;
-console.log(length);
+//console.log(length);
 
 function addDashes(randNum)
 {
@@ -38,7 +38,7 @@ function addDashes(randNum)
 
 var arrayDashes = addDashes(length);
 
-console.log(arrayDashes);
+//console.log(arrayDashes);
 
 answerSection.textContent = arrayDashes.join('');
 
@@ -64,29 +64,35 @@ function letterChecker (letterClicked){
         }
     }
 
-        if((randomWord.indexOf(letterClicked)) == -1)
-        {
-            console.log('IM HERE!');
-            keyCounter++;
-            addBodyPart();
-        }
+    if((randomWord.indexOf(letterClicked)) == -1)
+    {
+        console.log('IM HERE!');
+        keyCounter++;
+        addBodyPart();
+    }
 
+    /*console.log(arrayDashes.join(''));
+    console.log(keyCounter);*/
 
-        /*console.log(arrayDashes.join(''));*/
-        console.log(keyCounter);
-
-        if (arrayDashes.join('').toString() == randomWord)
-        {
-            answerSection.textContent = 'YOU WIN!';
-            setTimeout(() =>{
-                location.reload();
-            }, 1000);
-        }
-        else if(arrayDashes.join('').toString() != randomWord && keyCounter >= 6){
-            answerSection.textContent = 'GAME OVER!';
-            setTimeout(() =>{
-                location.reload();
-            }, 1000);
-        }; 
-    
+    if (arrayDashes.join('').toString() == randomWord)
+    {
+        var lettersDiv = document.getElementsByClassName('letters')[0];
+        lettersDiv.style.pointerEvents = 'none'; 
+        var winAudio = new Audio('assets/audio/win-sound-effect.mp3');
+        winAudio.play();
+        answerSection.textContent = 'YOU WIN!';
+        setTimeout(() =>{
+            location.reload();
+        }, 2000);
+    }
+    else if(arrayDashes.join('').toString() != randomWord && keyCounter >= 6){
+        var lettersDiv = document.getElementsByClassName('letters')[0];
+        lettersDiv.style.pointerEvents = 'none';
+        var loseAudio = new Audio('assets/audio/game-over.mp3');
+        loseAudio.play();   
+        answerSection.textContent = 'GAME OVER!';
+        setTimeout(() =>{
+            location.reload();
+        }, 2100);
+    }; 
 };
