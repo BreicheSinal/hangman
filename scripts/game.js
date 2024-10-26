@@ -43,9 +43,11 @@ var arrayDashes = addDashes(length);
 answerSection.textContent = arrayDashes.join('');
 
 var key = document.querySelectorAll('.letter');
-
+var clickAudio = new Audio('assets/audio/click-sound-effect.mp3');
+ 
 key.forEach((pressedKey) => {
     pressedKey.addEventListener('click', (event) =>{
+        clickAudio.play();
         console.log(`${event.target.textContent} clicked!`);
         var pressedLetter = event.target.textContent;
         letterChecker(pressedLetter);
