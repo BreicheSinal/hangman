@@ -5,7 +5,8 @@ var bodyParts = [
 
 var bodyPartsClasses = ['head', 'body', 'left-hand', 'right-hand',
     'left-leg', 'right-leg'
-]
+];
+
 var cnt = -1;
 
 function addBodyPart(){
@@ -17,5 +18,4 @@ function addBodyPart(){
     bodyPart.src = bodyParts[cnt];
     bodyPart.className = bodyPartsClasses[cnt];
     hangDiv.append(bodyPart);
-    console.log('added one another part');
-}
+};
